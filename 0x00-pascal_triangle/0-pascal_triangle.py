@@ -26,9 +26,9 @@ def line(prev):
     """
     Calculates the values of the next line
     Args:
-        prev (list): a list of integers
+        prev (list): previous list of integers
     Returns:
-        list of integers
+        next list of integers
     """
     if prev == []:
         return [1]
