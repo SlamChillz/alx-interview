@@ -13,12 +13,9 @@ def pascal_triangle(n):
     """
     if n <= 0:
         return []
-    pascal = []
-    for _ in range(n):
-        if len(pascal) == 0:
-            pascal.append(line([]))
-        else:
-            pascal.append(line(pascal[-1]))
+    pascal = [[1]]
+    for _ in range(1, n):
+        pascal.append(line(pascal[-1]))
     return pascal
 
 
@@ -30,11 +27,8 @@ def line(prev):
     Returns:
         next list of integers
     """
-    if prev == []:
-        return [1]
     length = len(prev)
     newLine = []
-    for v in range(length):
-        if v != length - 1:
-            newLine.append(prev[v] + prev[v+1])
+    for v in range(length - 1):
+        newLine.append(prev[v] + prev[v+1])
     return [prev[0]] + newLine + [prev[-1]]
