@@ -13,4 +13,4 @@ def validUTF8(data):
         (True): if all characters in data are valid UTF-8 code point
         (False): if one or more characters in data are invalid code point
     """
-    return all(list(map(lambda x: x >= 0 and x <= 128, data)))
+    return all(list(map(lambda x: x >= 0 and x < 128, data)))
