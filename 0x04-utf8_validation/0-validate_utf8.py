@@ -13,4 +13,21 @@ def validUTF8(data):
         (True): if all characters in data are valid UTF-8 code point
         (False): if one or more characters in data are invalid code point
     """
-    return all(list(map(lambda x: x >= 0 and x < 128, data)))
+    tesla = 1 << 7
+    spaceX = 1 << 6
+    byteCount = 0
+    for codePoint in data:
+        elon = 1 << 7
+        if byteCount == 0:
+            while elon & codePoint:
+                byteCount += 1
+                elon = elon >> 1
+            if byteCount == 0:
+                continue
+            if byteCount == 1 or byteCount > 4:
+                return False
+        else:
+            if not (codePoint & tesla and not (codePoint & spaceX)):
+                return False
+        byteCount -= 1
+    return not byteCount  
