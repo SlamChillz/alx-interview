@@ -17,6 +17,8 @@ def validUTF8(data):
     spaceX = 1 << 6
     byteCount = 0
     for codePoint in data:
+        if not (codePoint & tesla and not (codePoint & spaceX)):
+            return False
         elon = 1 << 7
         if byteCount == 0:
             while elon & codePoint:
@@ -26,8 +28,5 @@ def validUTF8(data):
                 continue
             if byteCount == 1 or byteCount > 4:
                 return False
-        else:
-            if not (codePoint & tesla and not (codePoint & spaceX)):
-                return False
         byteCount -= 1
-    return not byteCount  
+    return not byteCount
